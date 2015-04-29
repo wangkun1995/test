@@ -1,0 +1,55 @@
+package junittest;
+public class MyMath
+{
+
+public double oneEquation(double a,double b)
+{
+  //如果a=0,则防范无法求解
+  if(a==0)
+  {
+   System.out.println("参数错误");
+   throw new ArithmeticException("参数错误");
+  }
+  else
+  {
+   System.out.println("一元一次方程有解");
+   return -b/a;
+  }
+}
+
+public double[] twoEquation(double a,double b,double c)
+{
+  double[] result;
+  if(a==0)
+  {
+   System.out.println("****************************"); 
+   throw new ArithmeticException("参数错误");
+  }
+  //有理数范围内无根
+  else if(b*b-4*a*c<0)
+  {
+   System.out.println("****************************"); 
+   throw new ArithmeticException("方程在理数范围内无解");
+  }
+  //方程有唯一的解
+  else if(b*b-4*a*c==0)
+  {
+   System.out.println("****************************"); 
+   System.out.println("方程存在唯一的解");
+   result=new double[1];
+   result[0]=-b/(2*a);
+   return result;
+  }
+  //方程有两个根
+  else
+  {
+   System.out.println("****************************");
+   System.out.println("方程存在两个解");
+   result=new double[2];
+   //使用数组返回方程的两个根
+   result[0]=(-b+Math.sqrt(b*b-4*a*c))/2/a;
+   result[1]=(-b-Math.sqrt(b*b-4*a*c))/2/a;
+   return result;
+  }
+}
+}
